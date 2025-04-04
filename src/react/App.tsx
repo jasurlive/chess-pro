@@ -1,14 +1,18 @@
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
-import { FaChess, FaChessKing, FaGlobe } from "react-icons/fa";
+import { FaChess, FaChessKing, FaGlobe, FaHome } from "react-icons/fa";
 import { SiLichess } from "react-icons/si";
-import ChessGame from "../tools/Game";
+import ChessGame1 from "../pages/Chess-1";
+import ChessGame2 from "../pages/Chess-2";
 import "../css/dom-menu.css";
 import "../css/App.css";
+import HomePage from "../pages/HomePage";
+import AnalysisBoard from "../pages/AnalysisPage";
+import { FaH } from "react-icons/fa6";
 
 function Chess1() {
   return (
     <div>
-      <ChessGame />
+      <ChessGame1 />
     </div>
   );
 }
@@ -16,12 +20,16 @@ function Chess1() {
 function Chess2() {
   return (
     <div>
-      <ChessGame />
+      <ChessGame2 />
     </div>
   );
 }
-function ChessAnalysis() {
-  return <div className="dom-menu-general-div">Chess Analysis Component</div>;
+function ChessBoardAnalysisPage() {
+  return (
+    <div>
+      <AnalysisBoard />
+    </div>
+  );
 }
 function ChessOnline() {
   return <div className="dom-menu-general-div">Chess Online Component</div>;
@@ -33,32 +41,39 @@ function App() {
       <nav className="dom-menu-container">
         <ul className="dom-menu-ul">
           <li className="dom-menu-item">
+            <Link to="/">
+              <FaHome className="dom-menu-icon" />
+              Home
+            </Link>
+          </li>
+          <li className="dom-menu-item">
             <Link to="/chess-1">
-              <FaChess />
+              <FaChess className="dom-menu-icon" /> Chess 1 Side
             </Link>
           </li>
           <li className="dom-menu-item">
             <Link to="/chess-analysis">
-              <SiLichess />
+              <SiLichess className="dom-menu-icon" /> Analysis
             </Link>
           </li>
           <li className="dom-menu-item">
             <Link to="/chess-2">
-              <FaChessKing />
+              <FaChessKing className="dom-menu-icon" /> Chess 2 Side
             </Link>
           </li>
 
           <li className="dom-menu-item">
             <Link to="/chess-online">
-              <FaGlobe />
+              <FaGlobe className="dom-menu-icon" /> Chess Online
             </Link>
           </li>
         </ul>
       </nav>
       <Routes>
+        <Route path="/" element={<HomePage />} />
         <Route path="/chess-1" element={<Chess1 />} />
         <Route path="/chess-2" element={<Chess2 />} />
-        <Route path="/chess-analysis" element={<ChessAnalysis />} />
+        <Route path="/chess-analysis" element={<ChessBoardAnalysisPage />} />
         <Route path="/chess-online" element={<ChessOnline />} />
       </Routes>
     </Router>
