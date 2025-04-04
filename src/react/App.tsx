@@ -32,7 +32,7 @@ function ChessBoardAnalysisPage() {
   );
 }
 function ChessOnline() {
-  return <div className="dom-menu-general-div">Chess Online Component</div>;
+  return <div className="dom-menu-general-div">Oops!Under development...</div>;
 }
 
 function App() {
