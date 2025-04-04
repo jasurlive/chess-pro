@@ -1,19 +1,31 @@
+import "../css/home.css";
+
 export default function HomePage() {
   return (
     <div className="home-page">
-      <h1>Welcome to my chess site</h1>
-      <ul>
-        <li>
-          <a href="/chess-1">Play chess with default pieces</a>
+      <header className="header-home">
+        <a href="/">uzChess.vercel.app</a>
+      </header>
+      <ul className="links-container-home">
+        <li className="links-grid-home">
+          <a href="/chess-1" className="link-item-home">
+            Chess 1 Side
+          </a>
         </li>
-        <li>
-          <a href="/chess-2">Play chess with custom pieces</a>
+        <li className="links-grid-home">
+          <a href="/chess-analysis" className="link-item-home">
+            Analysis
+          </a>
         </li>
-        <li>
-          <a href="/dom-menu">Dom menu</a>
+        <li className="links-grid-home">
+          <a href="/chess-2" className="link-item-home">
+            Chess 2 Side
+          </a>
         </li>
-        <li>
-          <a href="/game-state">Game state</a>
+        <li className="links-grid-home">
+          <a href="/chess-online" className="link-item-home">
+            Chess Online
+          </a>
         </li>
       </ul>
     </div>
