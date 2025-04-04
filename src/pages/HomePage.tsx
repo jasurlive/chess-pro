@@ -1,31 +1,32 @@
+import { Link } from "react-router-dom";
 import "../css/home.css";
 
 export default function HomePage() {
   return (
     <div className="home-page">
       <header className="header-home">
-        <a href="/">uzChess.vercel.app</a>
+        <Link to="/">uzChess.vercel.app</Link>
       </header>
       <ul className="links-container-home">
         <li className="links-grid-home">
-          <a href="/chess-1" className="link-item-home">
+          <Link to="/chess-1" className="link-item-home">
             Chess 1 Side
-          </a>
+          </Link>
         </li>
         <li className="links-grid-home">
-          <a href="/chess-analysis" className="link-item-home">
+          <Link to="/chess-analysis" className="link-item-home">
             Analysis
-          </a>
+          </Link>
         </li>
         <li className="links-grid-home">
-          <a href="/chess-2" className="link-item-home">
+          <Link to="/chess-2" className="link-item-home">
             Chess 2 Side
-          </a>
+          </Link>
         </li>
         <li className="links-grid-home">
-          <a href="/chess-online" className="link-item-home">
+          <Link to="/chess-online" className="link-item-home">
             Chess Online
-          </a>
+          </Link>
         </li>
       </ul>
     </div>
