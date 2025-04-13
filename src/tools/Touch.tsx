@@ -1,4 +1,4 @@
-import { useState } from "react";
+/* import { useState } from "react";
 import { Chess, Move } from "chess.js";
 import Chessboard from "react-chessboard";
 
@@ -66,3 +66,4 @@ export default function Touch({
     />
   );
 }
+ */
