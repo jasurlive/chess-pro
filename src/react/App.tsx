@@ -32,7 +32,9 @@ function ChessBoardAnalysisPage() {
   );
 }
 function ChessOnline() {
-  return <div className="dom-menu-general-div">Oops!Under development...</div>;
+  return (
+    <div className="dom-menu-general-div">Oops! Still under development...</div>
+  );
 }
 
 function App() {
