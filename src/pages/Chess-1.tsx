@@ -1,35 +1,45 @@
 import { useEffect, useState } from "react";
-import { Chess } from "chess.js";
 import Chessboard1 from "../tools/chessboard-1";
 import getCustomPieces from "../tools/pieces";
 import { handleMoveSounds, playGameStartSound } from "../tools/sound";
+import GameLogic from "../tools/GameLogic";
 
 export default function ChessGame1() {
-  const [game, setGame] = useState(new Chess());
-  const [fen, setFen] = useState(game.fen());
+  const [gameLogic, setGameLogic] = useState(new GameLogic());
+  const [fen, setFen] = useState(gameLogic.getFen());
   const [boardOrientation, setBoardOrientation] = useState<"white" | "black">(
     "white"
   );
   const customPieces = getCustomPieces();
 
   useEffect(() => {
-    setFen(game.fen());
+    setFen(gameLogic.getFen());
     playGameStartSound();
   }, []);
 
   const onDrop = (sourceSquare: string, targetSquare: string) => {
-    const newGame = new Chess(game.fen());
-    const move = newGame.move({ from: sourceSquare, to: targetSquare });
+    const logic = new GameLogic(gameLogic.getFen());
+    const result = logic.move(sourceSquare, targetSquare, "q");
 
-    if (move) {
-      setGame(newGame);
-      setFen(newGame.fen());
-      setBoardOrientation((prev) => (prev === "white" ? "black" : "white")); // Rotate board
-      handleMoveSounds(newGame, move);
+    if (result.valid) {
+      setGameLogic(logic);
+      setFen(result.updatedFen);
+      setBoardOrientation((prev) => (prev === "white" ? "black" : "white"));
+      handleMoveSounds(logic.getInstance(), result.move);
+
+      const status = result.gameStatus;
+
+      if (status.isCheckmate) console.log("Checkmate!");
+      else if (status.isStalemate) console.log("Stalemate!");
+      else if (status.isThreefoldRepetition) console.log("Draw by repetition!");
+      else if (status.isFiftyMoveRule)
+        console.log("Draw by 50-move rule or insufficient material!");
+      else if (status.isCheck) console.log("Check!");
+
       return true;
     }
 
-    handleMoveSounds(newGame, null);
+    handleMoveSounds(logic.getInstance(), null);
     return false;
   };
 
